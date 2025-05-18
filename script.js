@@ -24,14 +24,23 @@ window.addEventListener("load", function () {
     }
   ];
 
-  worldHistoryEvents.forEach(event => {
-    const marker = new google.maps.Marker({
+  let currentIndex = 0;
+  let currentMarker = null;
+  let currentInfoWindow = null;
+
+  function showNextEvent() {
+    const event = worldHistoryEvents[currentIndex];
+
+    if (currentMarker) currentMarker.setMap(null);
+    if (currentInfoWindow) currentInfoWindow.close();
+
+    currentMarker = new google.maps.Marker({
       position: { lat: event.lat, lng: event.lng },
       map: map,
       title: `${event.year}年 ${event.title}`
     });
 
-    const infowindow = new google.maps.InfoWindow({
+    currentInfoWindow = new google.maps.InfoWindow({
       content: `
         <div style="max-width: 300px; padding: 8px 10px; font-size: 15px; line-height: 1.5;">
           <h3 style="font-size: 15px; margin: 0 0 6px 0;">${event.year}年 ${event.title}</h3>
@@ -41,8 +50,12 @@ window.addEventListener("load", function () {
       `
     });
 
-    marker.addListener("click", () => {
-      infowindow.open(map, marker);
-    });
-  });
+    currentInfoWindow.open(map, currentMarker);
+    map.panTo({ lat: event.lat, lng: event.lng });
+
+    currentIndex = (currentIndex + 1) % worldHistoryEvents.length;
+  }
+
+  showNextEvent();
+  setInterval(showNextEvent, 20000); // 20秒ごとに切り替え
 });
