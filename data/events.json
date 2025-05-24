@@ -4,13 +4,17 @@
     "title": "サラエボ事件",
     "description": "第一次世界大戦の引き金となった事件。オーストリア皇太子が暗殺された。",
     "location": "サラエボ",
-    "wiki": "https://ja.wikipedia.org/wiki/サラエボ事件"
+    "wiki": "https://ja.wikipedia.org/wiki/サラエボ事件",
+    "country": "オーストリア＝ハンガリー帝国",
+    "category": "戦争"
   },
   {
     "year": 1789,
     "title": "フランス革命",
     "description": "バスティーユ牢獄襲撃を皮切りに市民革命が勃発。",
     "location": "パリ",
-    "wiki": "https://ja.wikipedia.org/wiki/フランス革命"
+    "wiki": "https://ja.wikipedia.org/wiki/フランス革命",
+    "country": "フランス",
+    "category": "革命"
   }
 ]

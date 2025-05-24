@@ -27,6 +27,31 @@
   ></script>
 </head>
 <body>
+  <div id="filters" style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 8px; border-radius: 6px; z-index: 1;">
+    <label for="yearFilter">年代:</label>
+    <select id="yearFilter">
+      <option value="all">全時代</option>
+      <option value="〜1500">〜1500年</option>
+      <option value="1500〜1800">1500〜1800年</option>
+      <option value="1800〜1900">1800〜1900年</option>
+      <option value="1900〜">1900年〜</option>
+    </select>
+
+    <label for="countryFilter">国:</label>
+    <select id="countryFilter">
+      <option value="all">全ての国</option>
+      <option value="オーストリア＝ハンガリー帝国">オーストリア＝ハンガリー帝国</option>
+      <option value="フランス">フランス</option>
+    </select>
+
+    <label for="categoryFilter">分類:</label>
+    <select id="categoryFilter">
+      <option value="all">全分類</option>
+      <option value="戦争">戦争</option>
+      <option value="革命">革命</option>
+    </select>
+  </div>
+
   <div id="map"></div>
   <script>
     if ('serviceWorker' in navigator) {

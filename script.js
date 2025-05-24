@@ -6,6 +6,7 @@ window.addEventListener("load", function () {
   });
 
   let enrichedEvents = [];
+  let enrichedEventsFiltered = [];
   let currentIndex = 0;
   let currentMarker = null;
   let currentInfoWindow = null;
@@ -19,14 +20,50 @@ window.addEventListener("load", function () {
       return match ? { ...event, lat: match.lat, lng: match.lng } : null;
     }).filter(Boolean);
 
-    if (enrichedEvents.length > 0) {
+    applyFilters();
+
+    if (enrichedEventsFiltered.length > 0) {
       showNextEvent();
       setInterval(showNextEvent, 20000);
     }
   });
 
+  // フィルターを適用する関数
+  function applyFilters() {
+    const yearFilter = document.getElementById("yearFilter")?.value || "all";
+    const countryFilter = document.getElementById("countryFilter")?.value || "all";
+    const categoryFilter = document.getElementById("categoryFilter")?.value || "all";
+
+    enrichedEventsFiltered = enrichedEvents.filter(event => {
+      const yearMatch =
+        yearFilter === "all" ||
+        (yearFilter === "〜1500" && event.year <= 1500) ||
+        (yearFilter === "1500〜1800" && event.year > 1500 && event.year <= 1800) ||
+        (yearFilter === "1800〜1900" && event.year > 1800 && event.year <= 1900) ||
+        (yearFilter === "1900〜" && event.year >= 1900);
+
+      const countryMatch = countryFilter === "all" || event.country === countryFilter;
+      const categoryMatch = categoryFilter === "all" || event.category === categoryFilter;
+
+      return yearMatch && countryMatch && categoryMatch;
+    });
+
+    currentIndex = 0;
+  }
+
+  // フィルター変更時の処理
+  ["yearFilter", "countryFilter", "categoryFilter"].forEach(id => {
+    const select = document.getElementById(id);
+    if (select) {
+      select.addEventListener("change", () => {
+        applyFilters();
+      });
+    }
+  });
+
   function showNextEvent() {
-    const event = enrichedEvents[currentIndex];
+    if (!enrichedEventsFiltered.length) return;
+    const event = enrichedEventsFiltered[currentIndex];
     if (!event) return;
 
     if (currentMarker) currentMarker.setMap(null);
@@ -51,6 +88,6 @@ window.addEventListener("load", function () {
     currentInfoWindow.open(map, currentMarker);
     map.panTo({ lat: event.lat, lng: event.lng });
 
-    currentIndex = (currentIndex + 1) % enrichedEvents.length;
+    currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
   }
 });
