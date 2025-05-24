@@ -29,8 +29,11 @@ window.addEventListener("load", function () {
     applyFilters();
 
     if (enrichedEventsFiltered.length > 0) {
-      showNextEvent();
-      setInterval(showNextEvent, 20000);
+      displayEventAtCurrentIndex();
+      setInterval(() => {
+        currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
+        displayEventAtCurrentIndex();
+      }, 20000);
     } else {
       console.warn("⚠️ フィルター条件に一致するイベントがありませんでした。");
       const message = document.createElement("div");
@@ -82,7 +85,7 @@ window.addEventListener("load", function () {
     currentIndex = 0;
   }
 
-  function showNextEvent() {
+  function displayEventAtCurrentIndex() {
     if (!enrichedEventsFiltered.length) return;
     const event = enrichedEventsFiltered[currentIndex];
     if (!event) return;
@@ -114,12 +117,15 @@ window.addEventListener("load", function () {
 
     currentInfoWindow.open(map, currentMarker);
     map.panTo({ lat: event.lat, lng: event.lng });
-
-    currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
   }
 
   window.showPrevEvent = function () {
     currentIndex = (currentIndex - 1 + enrichedEventsFiltered.length) % enrichedEventsFiltered.length;
-    showNextEvent();
+    displayEventAtCurrentIndex();
+  };
+
+  window.showNextEvent = function () {
+    currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
+    displayEventAtCurrentIndex();
   };
 });
