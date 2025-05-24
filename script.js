@@ -107,9 +107,10 @@ window.addEventListener("load", function () {
           <p style="margin: 0 0 6px 0;">
             <a href="${event.wiki}" target="_blank" style="color: #2196F3; text-decoration: underline;">Wikipediaへ</a>
           </p>
-          <p style="margin: 0; text-align: right;">
-            <a href="#" onclick="window.showPrevEvent()" style="margin-right: 16px; text-decoration: underline; color: #2196F3;">＜戻る</a>
-            <a href="#" onclick="window.showNextEvent()" style="text-decoration: underline; color: #2196F3;">進む＞</a>
+          <p style="margin: 0; text-align: center;">
+            <a href="#" onclick="window.showPrevEvent()" style="margin: 0 12px; text-decoration: underline; color: #2196F3;">＜戻る</a>
+            <a href="index.html" style="margin: 0 12px; text-decoration: underline; color: #2196F3;">トップページ</a>
+            <a href="#" onclick="window.showNextEvent()" style="margin: 0 12px; text-decoration: underline; color: #2196F3;">進む＞</a>
           </p>
         </div>
       `
