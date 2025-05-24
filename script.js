@@ -101,7 +101,13 @@ window.addEventListener("load", function () {
         <div style="max-width: 300px; padding: 8px 10px; font-size: 15px; line-height: 1.5;">
           <h3 style="font-size: 15px; margin: 0 0 6px 0;">${event.year}年 ${event.title}</h3>
           <p style="margin: 0 0 6px 0;">${event.description}</p>
-          <p style="margin: 0;"><a href="${event.wiki}" target="_blank" style="color: #2196F3; text-decoration: underline;">Wikipediaへ</a></p>
+          <p style="margin: 0 0 6px 0;">
+            <a href="${event.wiki}" target="_blank" style="color: #2196F3; text-decoration: underline;">Wikipediaへ</a>
+          </p>
+          <p style="margin: 0; text-align: right;">
+            <a href="#" onclick="window.showPrevEvent()" style="margin-right: 16px; text-decoration: underline; color: #2196F3;">＜戻る</a>
+            <a href="#" onclick="window.showNextEvent()" style="text-decoration: underline; color: #2196F3;">進む＞</a>
+          </p>
         </div>
       `
     });
@@ -111,4 +117,9 @@ window.addEventListener("load", function () {
 
     currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
   }
+
+  window.showPrevEvent = function () {
+    currentIndex = (currentIndex - 1 + enrichedEventsFiltered.length) % enrichedEventsFiltered.length;
+    showNextEvent();
+  };
 });
