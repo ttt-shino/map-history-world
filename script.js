@@ -1,7 +1,7 @@
 window.addEventListener("load", function () {
   const map = new google.maps.Map(document.getElementById("map"), {
     center: { lat: 20, lng: 0 },
-    zoom: 5,
+    zoom: 7,
     gestureHandling: 'greedy',
   });
 
