@@ -19,6 +19,16 @@
       width: 100vw;
       height: 100vh;
     }
+
+    #filters {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px;
+      border-radius: 6px;
+      z-index: 1;
+    }
   </style>
   <script
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMBykSyX3cDUBR5BFbbShUVdsUXpTLY8"
@@ -27,7 +37,7 @@
   ></script>
 </head>
 <body>
-  <div id="filters" style="position: absolute; top: 10px; left: 10px; background: rgba(255,255,255,0.9); padding: 8px; border-radius: 6px; z-index: 1;">
+  <div id="filters">
     <label for="yearFilter">年代:</label>
     <select id="yearFilter">
       <option value="all">全時代</option>
