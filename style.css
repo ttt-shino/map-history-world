@@ -1,3 +1,30 @@
+/* ポップアップ内のリンクグループにレスポンシブ対応 */
+.popup-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.popup-links a {
+  color: #2196F3;
+  text-decoration: none;
+  padding: 4px 6px;
+}
+
+.popup-links a:hover {
+  text-decoration: underline;
+}
+
+/* スマホサイズでは縦並びにする */
+@media (max-width: 480px) {
+  .popup-links {
+    flex-direction: column;
+    align-items: center;
+  }
+}
 html, body {
   height: 100%;
   margin: 0;

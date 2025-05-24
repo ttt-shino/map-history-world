@@ -104,13 +104,19 @@ window.addEventListener("load", function () {
   <div style="max-width: 300px; padding: 8px 10px; font-size: 15px; line-height: 1.5;">
     <h3 style="font-size: 15px; margin: 0 0 6px 0;">${event.year}年 ${event.title}</h3>
     <p style="margin: 0 0 6px 0;">${event.description}</p>
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; margin-top: 12px; font-size: 14px;">
+    <div style="
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 14px;
+    ">
       <a href="${event.wiki}" target="_blank" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Wikipediaへ</a>
-      <div style="display: flex; gap: 10px;">
-        <a href="#" onclick="window.showPrevEvent()" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">＜戻る</a>
-        <a href="index.html" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">トップページ</a>
-        <a href="#" onclick="window.showNextEvent()" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">進む＞</a>
-      </div>
+      <a href="#" onclick="window.showPrevEvent()" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">＜戻る</a>
+      <a href="index.html" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">トップページ</a>
+      <a href="#" onclick="window.showNextEvent()" style="color: #2196F3; text-decoration: none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">進む＞</a>
     </div>
   </div>
 `
