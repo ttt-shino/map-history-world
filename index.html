@@ -86,5 +86,33 @@
       window.location.href = `map.html?year=${encodeURIComponent(year)}&continent=${encodeURIComponent(continent)}&region=${encodeURIComponent(region)}&category=${encodeURIComponent(category)}`;
     });
   </script>
+<script>
+  const continentToRegions = {
+    "アジア": ["東アジア", "東南アジア", "南アジア", "中央アジア", "西アジア"],
+    "ヨーロッパ": ["西ヨーロッパ", "東ヨーロッパ", "南ヨーロッパ", "北ヨーロッパ"],
+    "アフリカ": ["北アフリカ", "サハラ以南アフリカ"],
+    "アメリカ": ["北アメリカ", "中南アメリカ"],
+    "オセアニア": ["オーストラリアと周辺諸国"]
+  };
+
+  const continentSelect = document.getElementById("continent");
+  const regionSelect = document.getElementById("region");
+
+  continentSelect.addEventListener("change", function () {
+    const selectedContinent = this.value;
+    const regions = continentToRegions[selectedContinent] || [];
+
+    // 「全ての地域」を保持して、それ以外をクリア
+    regionSelect.innerHTML = '<option value="all">全ての地域</option>';
+
+    // 該当する地域を追加
+    regions.forEach(region => {
+      const option = document.createElement("option");
+      option.value = region;
+      option.textContent = region;
+      regionSelect.appendChild(option);
+    });
+  });
+</script>
 </body>
 </html>
