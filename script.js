@@ -45,19 +45,16 @@ window.addEventListener("load", function () {
       message.style.fontSize = "18px";
       message.style.zIndex = "2";
 
-      const backButton = document.createElement("button");
-      backButton.textContent = "トップページに戻る";
-      backButton.style.display = "block";
-      backButton.style.margin = "16px auto 0";
-      backButton.style.padding = "10px 20px";
-      backButton.style.fontSize = "16px";
-      backButton.style.backgroundColor = "#1a73e8";
-      backButton.style.color = "white";
-      backButton.style.border = "none";
-      backButton.style.borderRadius = "6px";
-      backButton.style.cursor = "pointer";
-      backButton.onclick = () => window.location.href = "index.html";
-      message.appendChild(backButton);
+      const backLink = document.createElement("a");
+      backLink.textContent = "トップページに戻る";
+      backLink.href = "index.html";
+      backLink.style.display = "block";
+      backLink.style.textAlign = "center";
+      backLink.style.marginTop = "16px";
+      backLink.style.fontSize = "14px";
+      backLink.style.color = "#555";
+      backLink.style.textDecoration = "underline";
+      message.appendChild(backLink);
 
       document.body.appendChild(message);
     }
