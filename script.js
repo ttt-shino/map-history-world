@@ -22,6 +22,10 @@ window.addEventListener("load", function () {
 
     applyFilters();
 
+    if (enrichedEventsFiltered.length === 0) {
+      enrichedEventsFiltered = enrichedEvents.slice();
+    }
+
     if (enrichedEventsFiltered.length > 0) {
       showNextEvent();
       setInterval(showNextEvent, 20000);
@@ -47,6 +51,8 @@ window.addEventListener("load", function () {
 
       return yearMatch && countryMatch && categoryMatch;
     });
+
+    console.log("📦 Filtered events:", enrichedEventsFiltered);
 
     currentIndex = 0;
   }
