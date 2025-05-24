@@ -34,7 +34,7 @@ header h1::after {
   max-width: 240px; /* approximate width of the "Mapで世界史" text */
   height: 1px; /* thinner line */
   background-color: #111;
-  margin: 12px auto 0; /* adjust vertical spacing */
+  margin: 6px auto 0; /* adjust vertical spacing */
 }
 
 /* .lead-bar {
