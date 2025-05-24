@@ -51,6 +51,23 @@ header .lead {
   color: #555;
 }
 
+.header-line {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  width: 60px;
+  margin: 12px auto;
+}
+
+.info-bar {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+  background: #f0f0f0;
+  padding: 6px 12px;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
 main {
   max-width: 720px;
   margin: 0 auto;
