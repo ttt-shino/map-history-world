@@ -44,6 +44,21 @@ window.addEventListener("load", function () {
       message.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
       message.style.fontSize = "18px";
       message.style.zIndex = "2";
+
+      const backButton = document.createElement("button");
+      backButton.textContent = "トップページに戻る";
+      backButton.style.display = "block";
+      backButton.style.margin = "16px auto 0";
+      backButton.style.padding = "10px 20px";
+      backButton.style.fontSize = "16px";
+      backButton.style.backgroundColor = "#1a73e8";
+      backButton.style.color = "white";
+      backButton.style.border = "none";
+      backButton.style.borderRadius = "6px";
+      backButton.style.cursor = "pointer";
+      backButton.onclick = () => window.location.href = "index.html";
+      message.appendChild(backButton);
+
       document.body.appendChild(message);
     }
   });
