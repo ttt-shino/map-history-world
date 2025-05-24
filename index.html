@@ -14,73 +14,46 @@
       margin: 0;
       padding: 0;
     }
-
-    #map {
-      width: 100vw;
-      height: 100vh;
-    }
-
-    #filters {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 8px;
-      border-radius: 6px;
-      z-index: 1;
-      display: block;
-    }
-
-    #filters select {
-      min-width: 160px;
-      margin: 4px 6px 4px 0;
-    }
   </style>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLMBykSyX3cDUBR5BFbbShUVdsUXpTLY8"
-    async
-    defer
-  ></script>
 </head>
 <body>
-  <div id="filters">
-    <label for="yearFilter">年代:</label>
-    <select id="yearFilter">
-      <option value="all">全時代</option>
-      <option value="〜1500">〜1500年</option>
-      <option value="1500〜1800">1500〜1800年</option>
-      <option value="1800〜1900">1800〜1900年</option>
-      <option value="1900〜">1900年〜</option>
-    </select>
+<h1>Mapで世界史 - フィルター選択</h1>
 
-    <label for="countryFilter">国:</label>
-    <select id="countryFilter">
-      <option value="all">全ての国</option>
-      <option value="オーストリア＝ハンガリー帝国">オーストリア＝ハンガリー帝国</option>
-      <option value="フランス">フランス</option>
-    </select>
+<form id="filterForm">
+  <label for="year">年代:</label>
+  <select name="year" id="year">
+    <option value="all">全時代</option>
+    <option value="〜1500">〜1500年</option>
+    <option value="1500〜1800">1500〜1800年</option>
+    <option value="1800〜1900">1800〜1900年</option>
+    <option value="1900〜">1900年〜</option>
+  </select>
 
-    <label for="categoryFilter">分類:</label>
-    <select id="categoryFilter">
-      <option value="all">全分類</option>
-      <option value="戦争">戦争</option>
-      <option value="革命">革命</option>
-    </select>
-  </div>
+  <label for="country">国:</label>
+  <select name="country" id="country">
+    <option value="all">全ての国</option>
+    <option value="オーストリア＝ハンガリー帝国">オーストリア＝ハンガリー帝国</option>
+    <option value="フランス">フランス</option>
+  </select>
 
-  <div id="map"></div>
-  <script>
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', () => {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(reg => {
-            console.log('✅ Service Worker registered:', reg);
-          })
-          .catch(err => {
-            console.error('❌ Service Worker registration failed:', err);
-          });
-      });
-    }
-  </script>
+  <label for="category">分類:</label>
+  <select name="category" id="category">
+    <option value="all">全分類</option>
+    <option value="戦争">戦争</option>
+    <option value="革命">革命</option>
+  </select>
+
+  <button type="submit">地図を見る</button>
+</form>
+
+<script>
+document.getElementById('filterForm').addEventListener('submit', function (e) {
+  e.preventDefault();
+  const year = document.getElementById('year').value;
+  const country = document.getElementById('country').value;
+  const category = document.getElementById('category').value;
+  window.location.href = `map.html?year=${encodeURIComponent(year)}&country=${encodeURIComponent(country)}&category=${encodeURIComponent(category)}`;
+});
+</script>
 </body>
 </html>

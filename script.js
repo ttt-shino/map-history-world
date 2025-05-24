@@ -11,6 +11,11 @@ window.addEventListener("load", function () {
   let currentMarker = null;
   let currentInfoWindow = null;
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const yearFilter = urlParams.get('year') || 'all';
+  const countryFilter = urlParams.get('country') || 'all';
+  const categoryFilter = urlParams.get('category') || 'all';
+
   Promise.all([
     fetch("data/events.json").then(res => res.json()),
     fetch("data/locations.json").then(res => res.json())
@@ -34,10 +39,6 @@ window.addEventListener("load", function () {
 
   // フィルターを適用する関数
   function applyFilters() {
-    const yearFilter = document.getElementById("yearFilter")?.value || "all";
-    const countryFilter = document.getElementById("countryFilter")?.value || "all";
-    const categoryFilter = document.getElementById("categoryFilter")?.value || "all";
-
     enrichedEventsFiltered = enrichedEvents.filter(event => {
       const yearMatch =
         yearFilter === "all" ||
@@ -53,19 +54,8 @@ window.addEventListener("load", function () {
     });
 
     console.log("📦 Filtered events:", enrichedEventsFiltered);
-
     currentIndex = 0;
   }
-
-  // フィルター変更時の処理
-  ["yearFilter", "countryFilter", "categoryFilter"].forEach(id => {
-    const select = document.getElementById(id);
-    if (select) {
-      select.addEventListener("change", () => {
-        applyFilters();
-      });
-    }
-  });
 
   function showNextEvent() {
     if (!enrichedEventsFiltered.length) return;
