@@ -9,21 +9,6 @@ html, body {
   height: 100vh;
 }
 
-#filters {
-  position: absolute;
-  top: 300px;
-  left: 10px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 8px;
-  border-radius: 6px;
-  z-index: 1;
-  display: block;
-}
-
-#filters select {
-  min-width: 160px;
-  margin: 4px 6px 4px 0;
-}
 
 body {
   font-family: 'Noto Sans JP', sans-serif;
@@ -61,7 +46,7 @@ header .lead {
 
 main {
   max-width: 720px;
-  margin: 0 auto;
+  margin: 60px auto 0 auto;
   padding: 30px 20px;
   background: #fff;
   box-shadow: 0 0 12px rgba(0,0,0,0.05);
