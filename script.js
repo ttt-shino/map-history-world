@@ -27,13 +27,24 @@ window.addEventListener("load", function () {
 
     applyFilters();
 
-    if (enrichedEventsFiltered.length === 0) {
-      enrichedEventsFiltered = enrichedEvents.slice();
-    }
-
     if (enrichedEventsFiltered.length > 0) {
       showNextEvent();
       setInterval(showNextEvent, 20000);
+    } else {
+      console.warn("⚠️ フィルター条件に一致するイベントがありませんでした。");
+      const message = document.createElement("div");
+      message.textContent = "表示できる出来事がありません。";
+      message.style.position = "absolute";
+      message.style.top = "50%";
+      message.style.left = "50%";
+      message.style.transform = "translate(-50%, -50%)";
+      message.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+      message.style.padding = "20px";
+      message.style.borderRadius = "8px";
+      message.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+      message.style.fontSize = "18px";
+      message.style.zIndex = "2";
+      document.body.appendChild(message);
     }
   });
 
