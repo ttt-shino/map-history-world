@@ -40,5 +40,21 @@
       });
     }
   </script>
+  <script>
+    function getQueryParam(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name) || 'all';
+    }
+
+    const selectedYear = getQueryParam('year');
+    const selectedContinent = getQueryParam('continent');
+    const selectedRegion = getQueryParam('region');
+    const selectedCategory = getQueryParam('category');
+
+    console.log("選択された年:", selectedYear);
+    console.log("選択された大陸:", selectedContinent);
+    console.log("選択された地域:", selectedRegion);
+    console.log("選択されたカテゴリ:", selectedCategory);
+  </script>
 </body>
 </html>

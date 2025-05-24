@@ -5,7 +5,8 @@
     "description": "第一次世界大戦の引き金となった事件。オーストリア皇太子が暗殺された。",
     "location": "サラエボ",
     "wiki": "https://ja.wikipedia.org/wiki/サラエボ事件",
-    "country": "オーストリア＝ハンガリー帝国",
+    "continent": "ヨーロッパ",
+    "region": "東ヨーロッパ",
     "category": "戦争"
   },
   {
@@ -14,7 +15,8 @@
     "description": "バスティーユ牢獄襲撃を皮切りに市民革命が勃発。",
     "location": "パリ",
     "wiki": "https://ja.wikipedia.org/wiki/フランス革命",
-    "country": "フランス",
+    "continent": "ヨーロッパ",
+    "region": "西ヨーロッパ",
     "category": "革命"
   }
 ]

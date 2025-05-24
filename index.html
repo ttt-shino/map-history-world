@@ -31,11 +31,35 @@
       </div>
 
       <div class="filter-group">
-        <label for="country">国:</label>
-        <select name="country" id="country">
-          <option value="all">全ての国</option>
-          <option value="オーストリア＝ハンガリー帝国">オーストリア＝ハンガリー帝国</option>
-          <option value="フランス">フランス</option>
+        <label for="continent">大陸:</label>
+        <select name="continent" id="continent">
+          <option value="all">全ての大陸</option>
+          <option value="アジア">アジア</option>
+          <option value="ヨーロッパ">ヨーロッパ</option>
+          <option value="アフリカ">アフリカ</option>
+          <option value="アメリカ">アメリカ</option>
+          <option value="オセアニア">オセアニア</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <label for="region">地域:</label>
+        <select name="region" id="region">
+          <option value="all">全ての地域</option>
+          <option value="東アジア">東アジア</option>
+          <option value="東南アジア">東南アジア</option>
+          <option value="南アジア">南アジア</option>
+          <option value="中央アジア">中央アジア</option>
+          <option value="西アジア">西アジア（中東）</option>
+          <option value="西ヨーロッパ">西ヨーロッパ</option>
+          <option value="東ヨーロッパ">東ヨーロッパ</option>
+          <option value="南ヨーロッパ">南ヨーロッパ</option>
+          <option value="北ヨーロッパ">北ヨーロッパ</option>
+          <option value="北アフリカ">北アフリカ</option>
+          <option value="サハラ以南アフリカ">サハラ以南アフリカ</option>
+          <option value="北アメリカ">北アメリカ</option>
+          <option value="中南アメリカ">中南アメリカ</option>
+          <option value="オーストラリアと周辺諸国">オーストラリアと周辺諸国</option>
         </select>
       </div>
 
@@ -56,9 +80,10 @@
     document.getElementById('filterForm').addEventListener('submit', function (e) {
       e.preventDefault();
       const year = document.getElementById('year').value;
-      const country = document.getElementById('country').value;
+      const continent = document.getElementById('continent').value;
+      const region = document.getElementById('region').value;
       const category = document.getElementById('category').value;
-      window.location.href = `map.html?year=${encodeURIComponent(year)}&country=${encodeURIComponent(country)}&category=${encodeURIComponent(category)}`;
+      window.location.href = `map.html?year=${encodeURIComponent(year)}&continent=${encodeURIComponent(continent)}&region=${encodeURIComponent(region)}&category=${encodeURIComponent(category)}`;
     });
   </script>
 </body>

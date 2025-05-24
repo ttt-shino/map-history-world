@@ -13,7 +13,8 @@ window.addEventListener("load", function () {
 
   const urlParams = new URLSearchParams(window.location.search);
   const yearFilter = urlParams.get('year') || 'all';
-  const countryFilter = urlParams.get('country') || 'all';
+  const continentFilter = urlParams.get('continent') || 'all';
+  const regionFilter = urlParams.get('region') || 'all';
   const categoryFilter = urlParams.get('category') || 'all';
 
   Promise.all([
@@ -70,10 +71,11 @@ window.addEventListener("load", function () {
         (yearFilter === "1800〜1900" && event.year > 1800 && event.year <= 1900) ||
         (yearFilter === "1900〜" && event.year >= 1900);
 
-      const countryMatch = countryFilter === "all" || event.country === countryFilter;
+      const continentMatch = continentFilter === "all" || event.continent === continentFilter;
+      const regionMatch = regionFilter === "all" || event.region === regionFilter;
       const categoryMatch = categoryFilter === "all" || event.category === categoryFilter;
 
-      return yearMatch && countryMatch && categoryMatch;
+      return yearMatch && continentMatch && regionMatch && categoryMatch;
     });
 
     console.log("📦 Filtered events:", enrichedEventsFiltered);
