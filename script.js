@@ -68,10 +68,12 @@ window.addEventListener("load", function () {
     enrichedEventsFiltered = enrichedEvents.filter(event => {
       const yearMatch =
         yearFilter === "all" ||
-        (yearFilter === "〜1500" && event.year <= 1500) ||
-        (yearFilter === "1500〜1800" && event.year > 1500 && event.year <= 1800) ||
-        (yearFilter === "1800〜1900" && event.year > 1800 && event.year <= 1900) ||
-        (yearFilter === "1900〜" && event.year >= 1900);
+        (yearFilter === "prehistoric" && event.year <= -3000) ||
+        (yearFilter === "ancient" && event.year > -3000 && event.year <= 500) ||
+        (yearFilter === "medieval" && event.year > 500 && event.year <= 1500) ||
+        (yearFilter === "early-modern" && event.year > 1500 && event.year <= 1800) ||
+        (yearFilter === "modern" && event.year > 1800 && event.year < 1914) ||
+        (yearFilter === "contemporary" && event.year >= 1914);
 
       const continentMatch = continentFilter === "all" || event.continent === continentFilter;
       const regionMatch = regionFilter === "all" || event.region === regionFilter;
