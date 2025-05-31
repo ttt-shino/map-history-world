@@ -17,52 +17,47 @@ window.addEventListener("load", function () {
   const regionFilter = urlParams.get('region') || 'all';
   const categoryFilter = urlParams.get('category') || 'all';
 
-  Promise.all([
-    fetch("data/events.json").then(res => res.json()),
-    fetch("data/locations.json").then(res => res.json())
-  ]).then(([events, locations]) => {
-    enrichedEvents = events.map(event => {
-      const match = locations.find(loc => loc.name === event.location);
-      return match ? { ...event, lat: match.lat, lng: match.lng } : null;
-    }).filter(Boolean);
+  fetch("history.json")
+    .then(res => res.json())
+    .then(data => {
+      enrichedEvents = data;
+      applyFilters();
 
-    applyFilters();
-
-    if (enrichedEventsFiltered.length > 0) {
-      displayEventAtCurrentIndex();
-      setInterval(() => {
-        currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
+      if (enrichedEventsFiltered.length > 0) {
         displayEventAtCurrentIndex();
-      }, 20000);
-    } else {
-      console.warn("⚠️ フィルター条件に一致するイベントがありませんでした。");
-      const message = document.createElement("div");
-      message.textContent = "表示できる出来事がありません。";
-      message.style.position = "absolute";
-      message.style.top = "50%";
-      message.style.left = "50%";
-      message.style.transform = "translate(-50%, -50%)";
-      message.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
-      message.style.padding = "20px";
-      message.style.borderRadius = "8px";
-      message.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
-      message.style.fontSize = "18px";
-      message.style.zIndex = "2";
+        setInterval(() => {
+          currentIndex = (currentIndex + 1) % enrichedEventsFiltered.length;
+          displayEventAtCurrentIndex();
+        }, 20000);
+      } else {
+        console.warn("⚠️ フィルター条件に一致するイベントがありませんでした。");
+        const message = document.createElement("div");
+        message.textContent = "表示できる出来事がありません。";
+        message.style.position = "absolute";
+        message.style.top = "50%";
+        message.style.left = "50%";
+        message.style.transform = "translate(-50%, -50%)";
+        message.style.backgroundColor = "rgba(255, 255, 255, 0.9)";
+        message.style.padding = "20px";
+        message.style.borderRadius = "8px";
+        message.style.boxShadow = "0 2px 6px rgba(0,0,0,0.2)";
+        message.style.fontSize = "18px";
+        message.style.zIndex = "2";
 
-      const backLink = document.createElement("a");
-      backLink.textContent = "トップページに戻る";
-      backLink.href = "index.html";
-      backLink.style.display = "block";
-      backLink.style.textAlign = "center";
-      backLink.style.marginTop = "16px";
-      backLink.style.fontSize = "14px";
-      backLink.style.color = "#555";
-      backLink.style.textDecoration = "underline";
-      message.appendChild(backLink);
+        const backLink = document.createElement("a");
+        backLink.textContent = "トップページに戻る";
+        backLink.href = "index.html";
+        backLink.style.display = "block";
+        backLink.style.textAlign = "center";
+        backLink.style.marginTop = "16px";
+        backLink.style.fontSize = "14px";
+        backLink.style.color = "#555";
+        backLink.style.textDecoration = "underline";
+        message.appendChild(backLink);
 
-      document.body.appendChild(message);
-    }
-  });
+        document.body.appendChild(message);
+      }
+    });
 
   // フィルターを適用する関数
   function applyFilters() {
