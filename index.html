@@ -80,6 +80,14 @@
         </select>
       </div>
 
+      <div class="filter-group">
+        <label for="shuffle">ランダム表示:</label>
+        <select name="shuffle" id="shuffle">
+          <option value="false">しない</option>
+          <option value="true">する</option>
+        </select>
+      </div>
+
       <button type="submit" class="view-map-btn">地図を見る</button>
     </form>
   </main>
@@ -91,7 +99,8 @@
       const continent = document.getElementById('continent').value;
       const region = document.getElementById('region').value;
       const category = document.getElementById('category').value;
-      window.location.href = `map.html?year=${encodeURIComponent(year)}&continent=${encodeURIComponent(continent)}&region=${encodeURIComponent(region)}&category=${encodeURIComponent(category)}`;
+      const shuffle = document.getElementById('shuffle').value;
+      window.location.href = `map.html?year=${encodeURIComponent(year)}&continent=${encodeURIComponent(continent)}&region=${encodeURIComponent(region)}&category=${encodeURIComponent(category)}&shuffle=${encodeURIComponent(shuffle)}`;
     });
   </script>
 <script>

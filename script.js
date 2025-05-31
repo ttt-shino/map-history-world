@@ -16,11 +16,15 @@ window.addEventListener("load", function () {
   const continentFilter = urlParams.get('continent') || 'all';
   const regionFilter = urlParams.get('region') || 'all';
   const categoryFilter = urlParams.get('category') || 'all';
+  const shuffleParam = urlParams.get('shuffle') === 'true';
 
   fetch("history.json")
     .then(res => res.json())
     .then(data => {
       enrichedEvents = data;
+      if (shuffleParam) {
+        enrichedEvents = enrichedEvents.sort(() => Math.random() - 0.5);
+      }
       applyFilters();
 
       if (enrichedEventsFiltered.length > 0) {
