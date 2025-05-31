@@ -1,30 +1,13 @@
-/* ポップアップ内のリンクグループにレスポンシブ対応 */
-.popup-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  font-size: 14px;
-  margin-top: 12px;
-}
+/* CSS構造:
+   - マップコンテナのスタイル
+   - 本文と背景のスタイル
+   - ヘッダーのスタイル（タイトルエリアの背景と余白、メインタイトル、下線、サブタイトル）
+   - メインコンテンツのスタイル
+   - フィルターフォームのスタイル
+   - ポップアップのスタイル
+*/
 
-.popup-links a {
-  color: #2196F3;
-  text-decoration: none;
-  padding: 4px 6px;
-}
-
-.popup-links a:hover {
-  text-decoration: underline;
-}
-
-/* スマホサイズでは縦並びにする */
-@media (max-width: 480px) {
-  .popup-links {
-    flex-direction: column;
-    align-items: center;
-  }
-}
+/* Map container styles */
 html, body {
   height: 100%;
   margin: 0;
@@ -36,16 +19,29 @@ html, body {
   height: 100vh;
 }
 
-
+/* Body and background styles */
 body {
   font-family: 'Noto Sans JP', sans-serif;
   color: #111;
   background: linear-gradient(135deg, #f5f5f5, #eaeaea);
 }
 
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("images/whitemap.png") center/cover no-repeat;
+  opacity: 0.2;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Header styles */
+/* Controls the title area's background and spacing */
 header {
   text-align: center;
-  padding: 60px 20px 30px;
+  padding: 40px 20px 10px;
   background: rgba(255, 255, 255, 0.50); /* 背景を半透明に変更 */
 }
 
@@ -54,6 +50,7 @@ header h1 {
   margin: 0;
   font-weight: 700;
 }
+
 header h1::after {
   content: "";
   display: block;
@@ -64,13 +61,7 @@ header h1::after {
   margin: 6px auto 0; /* adjust vertical spacing */
 }
 
-/* .lead-bar {
-  width: 64px;
-  height: 3px;
-  background-color: #111;
-  margin: 16px auto 0;
-  border-radius: 2px;
-} */
+/* The thin underline beneath the main title */
 .lead-bar {
   width: fit-content;
   height: 1px; /* thinner line */
@@ -79,6 +70,7 @@ header h1::after {
   border-radius: 2px;
 }
 
+/* Subtitle styling */
 header .lead {
   font-size: 1.1rem;
   margin-top: 10px;
@@ -87,6 +79,7 @@ header .lead {
   font-weight: 500;
 }
 
+/* Main content styles */
 main {
   max-width: 720px;
   margin: 60px auto 0 auto;
@@ -96,6 +89,7 @@ main {
   border-radius: 8px;
 }
 
+/* Filter form styles */
 .filter-form {
   display: flex;
   flex-direction: column;
@@ -132,13 +126,31 @@ main {
   background-color: #155cc2;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: url("images/whitemap.png") center/cover no-repeat;
-  opacity: 0.2;
-  z-index: -1;
-  pointer-events: none;
+/* Popup styles */
+/* ポップアップ内のリンクグループにレスポンシブ対応 */
+.popup-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  margin-top: 12px;
+}
+
+.popup-links a {
+  color: #2196F3;
+  text-decoration: none;
+  padding: 4px 6px;
+}
+
+.popup-links a:hover {
+  text-decoration: underline;
+}
+
+/* スマホサイズでは縦並びにする */
+@media (max-width: 480px) {
+  .popup-links {
+    flex-direction: column;
+    align-items: center;
+  }
 }
