@@ -41,7 +41,7 @@ body::before {
 /* Controls the title area's background and spacing */
 header {
   text-align: center;
-  padding: 40px 20px 10px;
+  padding: 20px 20px 10px;
   background: rgba(255, 255, 255, 0.50); /* 背景を半透明に変更 */
 }
 
